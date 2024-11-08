@@ -3,7 +3,7 @@ const chokidar = require('chokidar');
 
 const nodeProcess = require('./process');
 
-const init = scriptPath => {
+const nodemonc = scriptPath => {
   const scriptExists = fs.existsSync(scriptPath);
   if (!scriptExists) throw new Error(`Failed resolving script at ${scriptPath}`);
 
@@ -21,4 +21,4 @@ const init = scriptPath => {
   });
 };
 
-init('.temp/server.js');
+module.exports = nodemonc;
