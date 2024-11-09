@@ -19,6 +19,7 @@ const nodeProcess = scriptPath => {
       terminate();
 
       log.warn("to restart at any time, enter 'rs'");
+      log.warn("to exit at any time, enter '.exit'");
       log.info(`${isInitialFork ? 'starting' : 'restarting'} 'node ${scriptPath}'`);
       cp = fork(scriptPath);
 
