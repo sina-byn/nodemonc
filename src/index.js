@@ -16,7 +16,7 @@ const nodemonc = scriptPath => {
     np.init();
   });
 
-  rl.listen({ rs: np.init });
+  rl.listen({ rs: np.init, '.exit': process.exit });
 
   // * terminate the running child_process before parent process exit
   process.on('beforeExit', () => {
