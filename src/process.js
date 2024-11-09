@@ -1,5 +1,8 @@
 const { fork } = require('child_process');
 
+const log = require('./log');
+
+let isInitialFork = true;
 let cp;
 
 const nodeProcess = scriptPath => {
@@ -15,19 +18,18 @@ const nodeProcess = scriptPath => {
     init: () => {
       terminate();
 
-      console.log('Initiating a new process');
+      if (isInitialFork) log.warn("to restart at any time, enter 'rs'")
+
+      log.info(`${isInitialFork ? 'starting' : 'restarting'} 'node ${scriptPath}'`);
       cp = fork(scriptPath);
 
       cp.on('spawn', () => {
-        console.log('Process was successfully spawned');
-      });
-
-      cp.on('error', err => {
-        console.log(err);
+        log.success(`'node ${scriptPath}' successfully started`);
+        isInitialFork = false;
       });
 
       cp.on('exit', () => {
-        console.log('Running process terminated');
+        log.success('clean exit');
       });
     },
     terminate,
