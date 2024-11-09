@@ -2,6 +2,7 @@ const fs = require('fs');
 const chokidar = require('chokidar');
 
 const nodeProcess = require('./process');
+const log = require('./log');
 
 const nodemonc = scriptPath => {
   const scriptExists = fs.existsSync(scriptPath);
@@ -11,13 +12,16 @@ const nodemonc = scriptPath => {
   np.init();
 
   chokidar.watch(scriptPath).on('change', () => {
-    console.log('script changed');
     np.init();
   });
 
   // * terminate the running child_process before parent process exit
   process.on('beforeExit', () => {
     np.terminate();
+  });
+
+  process.on('uncaughtException', err => {
+    log.error(err);
   });
 };
 
