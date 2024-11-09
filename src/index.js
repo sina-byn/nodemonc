@@ -2,6 +2,7 @@ const fs = require('fs');
 const chokidar = require('chokidar');
 
 const nodeProcess = require('./process');
+const rl = require('./readline');
 const log = require('./log');
 
 const nodemonc = scriptPath => {
@@ -14,6 +15,8 @@ const nodemonc = scriptPath => {
   chokidar.watch(scriptPath).on('change', () => {
     np.init();
   });
+
+  rl.listen({ rs: np.init });
 
   // * terminate the running child_process before parent process exit
   process.on('beforeExit', () => {
