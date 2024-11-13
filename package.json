@@ -1,18 +1,27 @@
 {
   "name": "nodemonc",
   "version": "1.0.0",
-  "description": "",
+  "description": "Building a Nodemon Clone with Node.js: A Step-by-Step Guide — Unleash the Power of Automation for Your Development Workflow",
   "main": "src/index.js",
   "bin": "bin/cli.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Sina Bayandorian <sina.sina.bayan@protonmail.com> (https://sina-byn.netlify.app/)",
+  "repository": "github:sina-byn/nodemonc",
+  "license": "MIT",
   "dependencies": {
     "chalk": "^4.1.2",
     "chokidar": "^4.0.1",
     "commander": "^12.1.0"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/sina-byn/nodemonc/issues",
+    "email": "sina.sina.bayan@protonmail.com"
+  },
+  "keywords": [
+    "nodejs",
+    "nodemon",
+    "javascript"
+  ]
 }
